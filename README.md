@@ -116,9 +116,7 @@ NGINX ports: N/A (non SSL) / 443 (SSL)
 
 The pseudo-SSL is a particular port used by Apache & Varnish to be a back-end for the NGINX SSL. The traffic itself is not SSL but the environment is configured to say to PHP scripts that we are on SSL connection (X-Forwarded-Proto & HTTPS environment variable).
 
-### Redirection loop in many systems like Wordpress
-
-### Redirection to HTTPS
+### Redirection loop in many systems (htaccess to HTTPS)
 
 You may need modify our redirection to HTTPS:
 
@@ -140,7 +138,7 @@ RewriteRule (.*) https://ssl-site.com/$1 [R=301,L]
 ### END HTTPS
 ```
 
-## For certain domains and scripts which may not be used with varnish
+## For certain domains or scripts which may not be used with varnish caching
 
 You may add multiple of domain host which you want to pass through Varnish, example is included in /etc/varnish/default.vcl.
 
@@ -157,7 +155,10 @@ I'm not a ISPConfig developer. I don't know if the way I do thing is good enough
 Here is a short list of things I think I'm not doing great:
 
 - **Full caching management interface on ISPConfig**
+
 Admins and users may requires an interface to use Varnish correctly (advanced caching rules, flushing the cache, caching rules template, ...) It is relatively easy to implement it with an external software (means outside ISPConfig control panel) as the proposed Varnish configuration doesn't depend on any ISPConfig functionnality. Theorically, we can use any Varnish Control Panel without interference. But it would be great if someones found a way to integrate in under the ISPConfig interface itself.
+
+I made many changes from repository https://github.com/manoaratefy/ispconfig3-varnish.
 
 There may be other improvements. Just open an issue/request a feature.
 
