@@ -1,0 +1,11 @@
+--- /usr/local/ispconfig/server/conf/vhost.conf.diff.master	2022-01-27 02:14:30.000000000 +0100
++++ /usr/local/ispconfig/server/conf/vhost.conf.master	2022-01-26 04:22:06.693463715 +0100
+@@ -11,7 +11,7 @@
+ </Directory>
+ 
+ <tmpl_loop name='vhosts'>
+-<VirtualHost {tmpl_var name='ip_address'}:{tmpl_var name='port'}>
++<VirtualHost {tmpl_var name='ip_address'}:6{tmpl_var name='port'}>
+ <tmpl_if name='use_proxy_protocol' op='==' value='y'>
+ <tmpl_if name='apache_version' op='>=' value='2.4.30' format='version'>
+ 	<IfModule mod_remoteip.c>
