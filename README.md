@@ -163,7 +163,7 @@ There may be other improvements. Just open an issue/request a feature.
 
 ## Installation services
 
-Do you need a sysadmin to install this module into your ISPConfig? I'm available for you. [Contact me](https://cooltronic.pl/) or (<https://potacki.com/>).
+Do you need a sysadmin to install this module into your ISPConfig? I'm available for you. [Contact us](https://cooltronic.pl/) or [Or developer](<https://potacki.com/>).
 
 If my work was useful for your business, or you have problems with this script, and you need help contact me.
 
