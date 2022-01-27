@@ -109,7 +109,9 @@ After that, you can restart all services:
 ## Notes
 
 Apache ports: 680 (non SSL) / 6433 (dummy SSL)
-Varnish ports: 80 (non SSL) / 680 (pseudo SSL, it works fine with ISPConfig SSL cert)
+
+Varnish ports: 80 (non SSL) / 680 (pseudo SSL, it works fine with ISPConfig SSL certificates)
+
 NGINX ports: N/A (non SSL) / 443 (SSL)
 
 The pseudo-SSL is a particular port used by Apache & Varnish to be a back-end for the NGINX SSL. The traffic itself is not SSL but the environment is configured to say to PHP scripts that we are on SSL connection (X-Forwarded-Proto & HTTPS environment variable).
