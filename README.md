@@ -44,7 +44,7 @@ Install dependancies:
 
 Clone the repo:
 
-    git clone https://github.com/manoaratefy/ispconfig3-varnish.git
+    git clone https://github.com/cooltronicpl/-ispconfig3-varnish.git
 
 Change Apache2 ports:
 
