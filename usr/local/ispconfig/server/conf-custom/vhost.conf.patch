@@ -1,5 +1,5 @@
---- /usr/local/ispconfig/server/conf/vhost.conf.diff.master	2022-01-27 02:14:30.000000000 +0100
-+++ /usr/local/ispconfig/server/conf/vhost.conf.master	2022-01-26 04:22:06.693463715 +0100
+--- /usr/local/ispconfig/server/conf/vhost.conf.master	2022-01-27 03:09:24.000000000 +0100
++++ /usr/local/ispconfig/server/conf-custom/vhost.conf.master	2022-01-31 11:58:22.963883957 +0100
 @@ -11,7 +11,7 @@
  </Directory>
  
@@ -9,3 +9,15 @@
  <tmpl_if name='use_proxy_protocol' op='==' value='y'>
  <tmpl_if name='apache_version' op='>=' value='2.4.30' format='version'>
  	<IfModule mod_remoteip.c>
+@@ -557,7 +557,10 @@
+ 			# WEBDAV BEGIN
+ 			# WEBDAV END
+ 		</IfModule>
+-
++<IfModule mod_remoteip.c>
++	RemoteIPHeader X-Forwarded-For
++	RemoteIPInternalProxy 127.0.0.1
++</IfModule>
+ <tmpl_if name='ssl_enabled'>
+ 	<tmpl_var name='apache_directives'>
+ <tmpl_else>

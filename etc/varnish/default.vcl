@@ -48,7 +48,41 @@ sub vcl_recv {
   if (req.http.host=="domain-to-disable.com"){
    return(pass);
   }
+  # Disabled IPs for minification with WP Rocket
+  if (client.ip == "109.234.160.58")
+  {
+    return(pass);
+  }
+  if (client.ip == "51.210.39.196")
+  {
+    return(pass);
+  }
+  if (client.ip == "51.83.15.135")
+  {
+    return(pass);
+  }
+  if (client.ip == "135.125.83.227")
+  {
+    return(pass);
+  }
+  # Added for disable for CRON Wordpress and previews
+  if (req.url ~ "^/preview=")
+  {
+    return(pass);
+  }
+  if (req.url ~ "wp-json")
+  {
+    return(pass);
+  }
 
+  if (req.url ~ "^/wp-json")
+  {
+    return(pass);
+  }
+  # Fixing some problems with WP Admin
+  if (req.url ~ "(wp-admin|post\.php|edit\.php|wp-login|wp-json)") {
+     return(pass);
+  }
    # Purge logic to remove objects from the cache. 
     # Tailored to the Proxy Cache Purge WordPress plugin
     # See https://wordpress.org/plugins/varnish-http-purge/

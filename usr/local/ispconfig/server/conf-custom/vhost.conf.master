@@ -557,7 +557,10 @@
 			# WEBDAV BEGIN
 			# WEBDAV END
 		</IfModule>
-
+<IfModule mod_remoteip.c>
+	RemoteIPHeader X-Forwarded-For
+	RemoteIPInternalProxy 127.0.0.1
+</IfModule>
 <tmpl_if name='ssl_enabled'>
 	<tmpl_var name='apache_directives'>
 <tmpl_else>
