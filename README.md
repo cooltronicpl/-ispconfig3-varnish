@@ -184,8 +184,6 @@ With ❤ by [CoolTRONIC.pl sp. z o.o.](https://cooltronic.pl) by [Pawel Potacki]
 
 ISPConfig 3 Varnish plugin
 
-Copyright (C) 2014 Joey Loman <joey@openetv.org>
-
 Copyright (c) 2022 by CoolTRONIC.pl sp. z o.o. by Pawel Potacki <github@cooltronic.pl>
 
 CoolTRONIC.pl sp. z o.o., hereby disclaims all copyright interest in the program “ISPConfig 3 Varnish plugin” written by Pawel Potacki and Joey Loman.
