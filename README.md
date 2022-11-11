@@ -186,7 +186,7 @@ ISPConfig 3 Varnish plugin
 
 Copyright (c) 2022 by CoolTRONIC.pl sp. z o.o. by Pawel Potacki <github@cooltronic.pl>
 
-CoolTRONIC.pl sp. z o.o., hereby disclaims all copyright interest in the program “ISPConfig 3 Varnish plugin” written by Pawel Potacki.
+CoolTRONIC.pl sp. z o.o., hereby holds all copyright interest in the program “ISPConfig 3 Varnish plugin” written by Pawel Potacki.
 
 More about CoolTRONIC.pl sp. z o.o. Interactive Agency https://cooltronic.pl/
 
