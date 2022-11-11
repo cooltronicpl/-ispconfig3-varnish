@@ -1,6 +1,6 @@
-# README Wordpress Varnish Cacher for Wordpress sites on ISP Config
+# Wordpress Varnish Cache plugin for Wordpress sites on ISP Config 3
 
-This ISPConfig plugin is built for those who wants setup Varnish Cache in ISPConfig for Wordpress sites. We use Varnish for cache, Apache for the backend, and we added NGINX for SSL termination.
+This ISPConfig 3 plugin is built for those who wants setup Varnish Cache in ISPConfig for Wordpress sites. We use Varnish for cache, Apache for the backend, and we added NGINX for SSL termination.
 
 So, we can have two scenario :
 
