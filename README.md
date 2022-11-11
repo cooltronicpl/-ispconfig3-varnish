@@ -13,12 +13,13 @@ I've done test with the following configuration:
 - Apache 2.4.52
 - nginx-common 1.18.0
 - Varnish 6.5.1
-- Wordpress 5.8.2, 5.9
+- Wordpress 5.8.2, 5.9, 6.0.x, 6.1
 - WP Bakery Builder and Elementor
 - ISPConfig Version 3.2.7p1
 - WordFence IP Detection
+- WP Rocket from 3.10.6 up to 3.12.x
 
-It works with WP Rocket 3.10.6 Varnish add-on cache clearing with this config. Also cache purging are working with Proxy Cache Purge 5.0.3.
+It works with WP Rocket 3.10.6 up to 3.12.x Varnish add-on cache clearing with this config. Also cache purging are working with Proxy Cache Purge 5.0.3.
 
 This should work fine with Ubuntu, and may requires small adjustments to work well on CentOS & RHEL-based distributions.
 
