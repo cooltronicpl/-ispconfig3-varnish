@@ -156,7 +156,7 @@ COMPOSER_HOME=/private
 COMPOSER_CACHE_DIR=/private/cache
 ```
 
-You now can use [CoolTRONIC.pl Varnish Cache Plugin for CraftCMS](https://github.com/cooltronicpl/varnishcache/), it will be soon available for 3.x and maybe for 4.x later. When you want to test it please, [contact us through the company site](https://cooltronic.pl/contact/).
+You now can use [CoolTRONIC.pl Varnish Cache Plugin for CraftCMS](https://github.com/cooltronicpl/varnishcache/), it will be soon available for 3.x and maybe for 4.x later. When you want to test it, please [contact us through the company site](https://cooltronic.pl/contact/).
 
 ## Notes
 
