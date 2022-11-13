@@ -21,7 +21,7 @@ I've done the test with the following configuration:
 * WP Bakery Builder and Elementor for WordPress
 * Now compatible with ISPConfig, this master version labeled v2 is tested with 3.2.8p1 and 3.2.8p2
 * WordFence IP Detection
-* WP Rocket from 3.10.6 up to 3.12.x with the plugin "WP Rocket | Alter Varnish's args" to change Varnish config on SSL sites
+* WP Rocket from 3.10.6 up to 3.12.x with the plugin ["WP Rocket | Alter Varnish's args"](https://docs.wp-rocket.me/article/493-using-varnish-with-wp-rocket) to change Varnish config to HTTPS on SSL sites
 * Proxy Cache Purge for WordPress
 * Softacolous with uncached staging in this example in /staging subfolder
 * CraftCMS 3.x with PHP 7.2 (with Composer patch)
