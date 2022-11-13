@@ -13,10 +13,10 @@ With SSL: Visitor > NGINX 443 > Varnish localhost 7443 > Apache
 
 I've done the test with the following configuration:
 
-* Debian 11 x64
-* Apache 2.4.52
-* nginx-common 1.18.0
-* Varnish 6.5.1
+* Tested on Debian 11 x64 with everything upgraded to 13.11.2022 with kernel 5.10.0-19-amd64
+* Apache 2.4.54
+* nginx-common 1.23.2
+* Varnish 6.5.1-1
 * Wordpress from 5.7, 5.8.2, 5.9, 6.0.x to 6.1
 * WP Bakery Builder and Elementor for WordPress
 * Now compatible with ISPConfig, this master version labeled v2m tested with 3.2.8p1 and 3.2.8p2
