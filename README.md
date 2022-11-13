@@ -29,7 +29,7 @@ I've done test with the following configuration:
 - Varnish Cache Purge 1.0.0-dev is now working now with CraftCMS 3.x and clears Varnish when we change data of SSL websites
 
 Now in alfa testing, it will be published [here](https://github.com/cooltronicpl/varnishcache/) we can share it if you want, please [contact us](https://cooltronic.pl/contact/).
-Notes at end how to install CraftCMS in ISPConfig 3 and using with Plugin Installer and Composer are at the bottom.
+Notes at end how to [install CraftCMS](https://github.com/cooltronicpl/-ispconfig3-varnish/blob/master/README.md#user-content-craft-cms-4x-and-3x-install-notes) in ISPConfig 3 and using with Plugin Installer and Composer are at the bottom.
 Now also with WP Rocket nginx is using GZIP and BROTLI for all SSL hosts.
 It works with WP Rocket 3.10.6 up to 3.12.x Varnish add-on cache clearing with this config. Also cache purging are working with Proxy Cache Purge 5.0.3.
 
@@ -156,7 +156,7 @@ NGINX ports: N/A (non SSL) / 443 (SSL)
 
 The pseudo-SSL is a particular port used by Apache & Varnish to be a back-end for the NGINX SSL. The traffic itself is not SSL but the environment is configured to say to PHP scripts that we are on SSL connection (X-Forwarded-Proto & HTTPS environment variable).
 
-## Craft CMS 4.x and 3.x Install notes
+## Craft CMS 4.x and 3.x Install notes for ISP Config 3
 
 All cookies are included in this script, so admin panel in `YOUR_DOMAIN.com/admin` works.
 For load CraftCMS from private folder in web change:
