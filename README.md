@@ -226,7 +226,7 @@ rm /etc/nginx/sites-enabled/000-apps.vhost
 rm /etc/nginx/sites-enabled/999-acme.vhost
 nano /etc/apache2/ports.conf
 ```
-2. Comment last line in nano or vim ```Listen 443```
+2. Comment last line in nano or vim ```#Listen 443```
 3. Remove the last string with date of backuped .vhosts files, it must ends with .master
 4. Reload vhosts ISPConfig > Tools > Sync Tools > Resync > Check "Websites" > Start. 
 5. Restart all services (apache2, Varnish, Nginx).
