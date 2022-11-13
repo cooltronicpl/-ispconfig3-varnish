@@ -94,7 +94,7 @@ Change Varnish ports:
 Move all files to its place:
 
 ```
-    cd ispconfig3-varnish
+    cd -ispconfig3-varnish
     cp -R etc/* /etc/
     cp -R usr/* /usr/
 ```
