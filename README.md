@@ -238,6 +238,6 @@ ISPConfig 3 Varnish Cache Plugin is free software: you can redistribute it and/o
 
 ISPConfig 3 Varnish Cache Plugin is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
 
-You should have received a copy of the GNU General Public License along with OpenETV. If not, see <https://www.gnu.org/licenses/>.
+You should have received a copy of the GNU General Public License along with ISPConfig 3 Varnish Cache Plugin. If not, see <https://www.gnu.org/licenses/>.
 
 See files COPYING.GPL2 and COPYING.GPL3 for more License information.
