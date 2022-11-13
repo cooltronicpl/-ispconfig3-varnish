@@ -235,7 +235,7 @@ nano /etc/apache2/ports.conf
     systemctl restart nginx
 ```
 6. Reload vhosts ISPConfig > Tools > Sync Tools > Resync > Check "Websites" > Start. 
-7. Repeat point 5.
+7. Repeat point 5. to restart web services
 ## Credits for contributors and knowledge sharing
 
 I've found very useful knowledge in the following URL:
