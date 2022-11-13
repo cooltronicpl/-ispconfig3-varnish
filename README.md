@@ -165,7 +165,9 @@ For load CraftCMS from private folder in web change:
 2. You must download latest zip or tar.gz of CraftCMS
 3. Copy web to web, and rest of files to private
 4. Make change in index.php from:```require dirname(__DIR__) . '/bootstrap.php';```. To:```require dirname(__DIR__) . '/private/bootstrap.php';```
-5. If you want to install plugins from admin panel with Composer add on end of private/.env:
+5. Create database and user
+6. Setup craft like on documentation [v4](https://craftcms.com/docs/4.x/installation.html) or [v3](https://craftcms.com/docs/3.x/installation.html) 
+6. If you want to install plugins from admin panel with Composer add on end of private/.env:
 
 ```
 COMPOSER_HOME=/private
