@@ -161,7 +161,7 @@ The pseudo-SSL is a particular port used by Apache & Varnish to be a back-end fo
 All cookies are included in this script, so admin panel in `YOUR_DOMAIN.com/admin` works.
 For load CraftCMS from private folder in web change:
 
-1. If you want use your Craft CMS you possibly need Composer
+1. If you want use your Craft CMS you possibly need Composer installed to use Plugin Store
 2. You must download latest zip or tar.gz of CraftCMS
 3. Copy web to web, and rest of files to private
 4. Make change in index.php from:```require dirname(__DIR__) . '/bootstrap.php';```. To:```require dirname(__DIR__) . '/private/bootstrap.php';```
