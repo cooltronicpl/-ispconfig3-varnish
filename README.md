@@ -159,7 +159,7 @@ The pseudo-SSL is a particular port used by Apache & Varnish to be a back-end fo
 ## Craft CMS 4.x and 3.x Install notes for ISP Config 3
 
 All cookies are included in this script, so admin panel in `YOUR_DOMAIN.com/admin` works.
-For load CraftCMS from private folder in web change:
+For load CraftCMS from private folder when not parent of web, you need to change:
 
 1. If you want use your Craft CMS you possibly need Composer installed to use Plugin Store
 2. You must download latest zip or tar.gz of CraftCMS
