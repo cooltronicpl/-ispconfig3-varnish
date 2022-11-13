@@ -1,37 +1,33 @@
-# Wordpress and CraftCMS 3.x, Craft CMS 4.x Varnish Cache Plugin with nginx SSL to cache www sites on ISP Config 3.8.2p1
+# WordPress and CraftCMS 3, Craft CMS 4 Varnish Cache Plugin with Nginx SSL to cache www sites on ISP Config 3.8.2p1
 
 With ❤️ [CoolTRONIC.pl sp. z o.o.](https://cooltronic.pl) presents caching solution written by [Pawel Potacki](https://potacki.com)
 
-This ISPConfig 3 plugin is built for those who wants setup Varnish Cache in ISPConfig for Wordpress, CraftCMS sites. We use Varnish for cache, Apache for the backend, and we added NGINX for SSL termination.
+This ISPConfig 3 plugin is built for those who want to set up Varnish Cache in ISPConfig for WordPress, and CraftCMS sites. We use Varnish for the cache, Apache for the backend, and we added NGINX for SSL termination.
+Your site is fast as rocket also with WP Rocket, Proxy Cache Purge on WordPress, and CoolTRONIC.pl Varnish Cache Purge on CraftCMS.
 
-Your sites is fast as rocket also with WP Rocket, Proxy Cache Purge on WordPress and CoolTRONIC.pl Varnish Cache Purge on CraftCMS.
+So, we can have two scenarios:
 
-So, we can have two scenario :
+Without SSL: Visitor > Varnish > Apache
+With SSL: Visitor > NGINX 443 > Varnish localhost 7443 > Apache
 
-- Without SSL: `Visitor > Varnish > Apache`
-- With SSL: `Visitor > NGINX 443 > Varnish localhost 7443 > Apache`
+I've done the test with the following configuration:
 
-I've done test with the following configuration:
+* Debian 11 x64
+* Apache 2.4.52
+* nginx-common 1.18.0
+* Varnish 6.5.1
+* Wordpress from 5.7, 5.8.2, 5.9, 6.0.x to 6.1
+* WP Bakery Builder and Elementor for WordPress
+* Now compatible with ISPConfig Version 3.2.8p1
+* WordFence IP Detection
+* WP Rocket from 3.10.6 up to 3.12.x with the plugin "WP Rocket | Alter Varnish's args" to change Varnish Addr on SSL sites
+* Proxy Cache Purge for WordPress
+* Softacolous with uncached staging in this example in /staging subfolder
+* CraftCMS 3.x with PHP 7.2 (with Composer patch)
+* CraftCMS 4.x with PHP 8.0 (with Composer patch)
+* Varnish Cache Purge 1.0.0-dev is now working now with CraftCMS 3.x and clears Varnish when we change data on SSL websites
 
-- Debian 11 x64
-- Apache 2.4.52
-- nginx-common 1.18.0
-- Varnish 6.5.1
-- Wordpress 5.7, 5.8.2, 5.9, 6.0.x, 6.1
-- WP Bakery Builder and Elementor for WordPress
-- Comaptibile with ISPConfig Version 3.2.8p1
-- WordFence IP Detection
-- WP Rocket from 3.10.6 up to 3.12.x with plugin "WP Rocket | Alter Varnish's args" to change Varnish Addr on SSL sites
-- Proxy Cache Purge for WordPress
-- Softacolous with uncached staging in this example in `/staging` subfolder
-- CraftCMS 3.x with PHP 7.2 (with Composer patch)
-- CraftCMS 4.x with PHP 8.0 (with Composer patch)
-- Varnish Cache Purge 1.0.0-dev is now working now with CraftCMS 3.x and clears Varnish when we change data of SSL websites
-
-Now in alfa testing, it will be published [here](https://github.com/cooltronicpl/varnishcache/) we can share it before if you want, please [contact us through company site](https://cooltronic.pl/contact/).
-Notes at end [how to install CraftCMS in ISPConfig 3](https://github.com/cooltronicpl/-ispconfig3-varnish#craft-cms-4x-and-3x-install-notes-for-isp-config-3) and using with Plugin Installer and Composer are at the bottom.
-Now also with WP Rocket nginx is using GZIP and BROTLI for all SSL hosts.
-It works with WP Rocket 3.10.6 up to 3.12.x Varnish add-on cache clearing with this config. Also cache purging are working with Proxy Cache Purge 5.0.3.
+Now in alfa testing, it will be published [here](https://github.com/cooltronicpl/varnishcache/) we can share it before if you want, please [contact us through the company site](https://cooltronic.pl/contact/). Notes at the end on [how to install CraftCMS in ISPConfig 3](https://github.com/cooltronicpl/-ispconfig3-varnish#craft-cms-4x-and-3x-install-notes-for-isp-config-3) and using with Plugin Installer and Composer are at the bottom. Now also with WP Rocket Nginx is using GZIP and BROTLI for all SSL hosts. It works with WP Rocket 3.10.6 up to 3.12.x Varnish add-on cache clearing with this config. Also, cache purging is working with Proxy Cache Purge 5.0.3 and to newest on v2.
 
 This should work fine with Ubuntu, on Debian 11 also, and may requires small adjustments to work well on CentOS & RHEL-based distributions.
 
@@ -43,13 +39,13 @@ Install dependancies:
     apt-get install debian-archive-keyring curl gnupg apt-transport-https gnupg2 ca-certificates lsb-release git -y
 ```
 
-### Install Varnish repo (for me unecessary on Debian 11, for old systems, needs testing)
+### Install Varnish repo (for me unnecessary on Debian 11, for old systems, needs testing)
 
 ```
     curl -s https://packagecloud.io/install/repositories/varnishcache/varnish64/script.deb.sh | sudo bash
 ```
 
-### Install NGINX repo (for me unecessary on Debian 11, for old systems, needs testing)
+### Install NGINX repo (for me unnecessary on Debian 11, for old systems, needs testing)
 
 ```
     echo "deb http://nginx.org/packages/debian `lsb_release -cs` nginx" \
@@ -57,7 +53,7 @@ Install dependancies:
     curl -fsSL https://nginx.org/keys/nginx_signing.key | apt-key add -
 ```
 
-### Install Varnish and NGINX (this is second step in Debian 11)
+### Install Varnish and NGINX (this is the second step in Debian 11)
 
 ```
     apt-get update
@@ -133,10 +129,8 @@ echo "    SetEnvIf X-Forwarded-Proto "^https$" X_REQUEST_SCHEME=https" >> /etc/a
 echo "</IfModule>" >> /etc/apache2/apache2.conf
 ```
 
-When this is applied the redirection to HTTPS in .htaccess must be modified (example in Notes section)
-
-Then, rebuild all vHost **BEFORE RESTARTING SERVICES** (in other case, Apache may not start then you'll not be able to open ISPConfig control panel).
-    ISPConfig > Tools > Sync Tools > Resync > Check "Websites" > Start
+When this is applied the redirection to HTTPS in .htaccess must be modified (example in the Notes section)
+Then, rebuild all vHost **before restarting services** (in other cases, Apache may not start then you'll not be able to open the ISPConfig control panel). ISPConfig > Tools > Sync Tools > Resync > Check "Websites" > Start. 
 After that, you can restart all services:
 
 
@@ -145,6 +139,24 @@ After that, you can restart all services:
     systemctl restart varnish
     systemctl restart nginx
 ```
+## Craft CMS 4.x and 3.x Install notes for ISP Config 3
+
+All cookies are included in this script, so the admin panel in YOUR_DOMAIN.com/admin works. To load CraftCMS from a private folder when not the parent of the web, you need to change:
+
+1. If you want to use your Craft CMS you possibly need Composer installed to use Plugin Store
+2. You must download the latest zip or tar.gz of CraftCMS
+3. Copy web to web, and rest of files to private
+4. Make a change in index.php from:```require dirname(__DIR__) . '/bootstrap.php';```. To:```require dirname(__DIR__) . '/private/bootstrap.php';```
+5. Create database and user
+6. Setup craft like on documentation [v4](https://craftcms.com/docs/4.x/installation.html) or [v3](https://craftcms.com/docs/3.x/installation.html) 
+6. If you want to install plugins from the admin panel with Composer add on the end of private/.env:
+
+```
+COMPOSER_HOME=/private
+COMPOSER_CACHE_DIR=/private/cache
+```
+
+You now can use [CoolTRONIC.pl Varnish Cache Plugin for CraftCMS](https://github.com/cooltronicpl/varnishcache/), it will be soon available for 3.x and maybe for 4.x later. When you want to test it please, [contact us through the company site](https://cooltronic.pl/contact/).
 
 ## Notes
 
@@ -154,33 +166,12 @@ Varnish ports: 80 (non SSL) / 680 (pseudo SSL, it works fine with ISPConfig SSL 
 
 NGINX ports: N/A (non SSL) / 443 (SSL)
 
-The pseudo-SSL is a particular port used by Apache & Varnish to be a back-end for the NGINX SSL. The traffic itself is not SSL but the environment is configured to say to PHP scripts that we are on SSL connection (X-Forwarded-Proto & HTTPS environment variable).
-
-## Craft CMS 4.x and 3.x Install notes for ISP Config 3
-
-All cookies are included in this script, so admin panel in `YOUR_DOMAIN.com/admin` works.
-For load CraftCMS from private folder when not parent of web, you need to change:
-
-1. If you want use your Craft CMS you possibly need Composer installed to use Plugin Store
-2. You must download latest zip or tar.gz of CraftCMS
-3. Copy web to web, and rest of files to private
-4. Make change in index.php from:```require dirname(__DIR__) . '/bootstrap.php';```. To:```require dirname(__DIR__) . '/private/bootstrap.php';```
-5. Create database and user
-6. Setup craft like on documentation [v4](https://craftcms.com/docs/4.x/installation.html) or [v3](https://craftcms.com/docs/3.x/installation.html) 
-6. If you want to install plugins from admin panel with Composer add on end of private/.env:
-
-```
-COMPOSER_HOME=/private
-COMPOSER_CACHE_DIR=/private/cache
-```
-
-You can use my CraftCMS Varnish Cache Plugin for CraftCMS, it will be soon available for 3.x and maybe for 4.x.
+The pseudo-SSL is a particular port used by Apache & Varnish to be a back-end for the NGINX SSL. The traffic itself is not SSL but the environment is configured to say to PHP scripts that we are on an SSL connection (X-Forwarded-Proto & HTTPS environment variable).
 
 ### Custom redirection to HTTPS.
 
-It fixes loop of redirection in many systems with .htaccess, redirect from HTTP to HTTPS
-
-You must need modify our redirection to HTTPS:
+It fixes the loop of redirection in many systems with .htaccess, redirecting from HTTP to HTTPS.
+You must need to modify our existing redirection to HTTPS:
 
 ```
 <IfModule mod_rewrite.c>
@@ -200,7 +191,7 @@ RewriteRule (.*) https://ssl-site.com/$1 [R=301,L]
 
 ## For certain domains or scripts which may not be used with varnish caching
 
-You may add multiple of domain host which you want to pass through Varnish, example is included in /etc/varnish/default.vcl.
+You may add multiple domain hosts which you want to pass through Varnish, an example is included in /etc/varnish/default.vcl.
 
 ```
 if (req.http.host=="domain-to-disable.com"){
@@ -210,27 +201,22 @@ if (req.http.host=="domain-to-disable.com"){
 
 ## What needed to be improved?
 
-I'm not a ISPConfig developer. I don't know if the way I do thing is good enough to have long-term compatibility with ISPConfig. I'm just making things working. So, I'm calling other developers to review my code and to adjust things that I do wrong.
-
+I'm not an ISPConfig developer. I don't know if the way I do a thing is good enough to have long-term compatibility with ISPConfig. I'm just making things work. So, I'm calling other developers to review my code and to adjust things that I do wrong.
 Here is a short list of things I think I'm not doing great:
 
 - **Full caching management interface on ISPConfig**
 
-Admins and users may requires an interface to use Varnish correctly (advanced caching rules, flushing the cache, caching rules template, ...) It is relatively easy to implement it with an external software (means outside ISPConfig control panel) as the proposed Varnish configuration doesn't depend on any ISPConfig functionnality. Theorically, we can use any Varnish Control Panel without interference. But it would be great if someones found a way to integrate in under the ISPConfig interface itself.
-
-I made many changes from repository <https://github.com/manoaratefy/ispconfig3-varnish>.
+Admins and users may require an interface to use Varnish correctly (advanced caching rules, flushing the cache, caching rules template, ...) It is relatively easy to implement it with external software (means outside ISPConfig control panel) as the proposed Varnish configuration doesn't depend on any ISPConfig functionality. Theoretically, we can use any Varnish Control Panel without interference. But it would be great if someone found a way to integrate it under the ISPConfig interface itself. We made big changes from the [repository](https://github.com/manoaratefy/ispconfig3-varnish).
 
 There may be other improvements. Just open an issue/request a feature.
 
 ## Installation services
 
-Do you need a sysadmin to install this module into your ISPConfig? I'm available for you. [Contact us](https://cooltronic.pl/contact/) or [Or developer](<https://potacki.com/>).
+Do you need a sysadmin to install this module into your ISPConfig? We are available for you. [Contact us](https://cooltronic.pl/contact/) or [developer](<https://potacki.com/>). If my work was useful for your business, or you have problems with this script, and you need help contact me.
 
-If my work was useful for your business, or you have problems with this script, and you need help contact me.
+## Credits for contributors and knowledge sharing
 
-## Credits for contributors
-
-I've found very useful information in the following URL:
+I've found very useful knowledge in the following URL:
 
 - [@manoaratefy](https://github.com/manoaratefy/ispconfig3-varnish)
 - [@Rackster](https://github.com/Rackster/ispconfig3-nginx-reverse-proxy)
