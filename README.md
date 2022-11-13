@@ -145,11 +145,11 @@ All cookies are included in this script, so the admin panel in YOUR_DOMAIN.com/a
 
 1. If you want to use your Craft CMS you possibly need Composer installed to use Plugin Store
 2. You must download the latest zip or tar.gz of CraftCMS
-3. Copy web to web, and rest of files to private
-4. Make a change in index.php from:```require dirname(__DIR__) . '/bootstrap.php';```. To:```require dirname(__DIR__) . '/private/bootstrap.php';```
+3. Copy web to HOST_ROOT/web, and rest of files to HOST_ROOT/private
+4. Make a change in HOST_ROOT/web/index.php from:```require dirname(__DIR__) . '/bootstrap.php';```. To:```require dirname(__DIR__) . '/private/bootstrap.php';```
 5. Create database and user
 6. Setup craft like on documentation of chosen version [4](https://craftcms.com/docs/4.x/installation.html) or [3](https://craftcms.com/docs/3.x/installation.html) 
-6. If you want to install plugins from the admin panel with Composer add on the end of private/.env:
+6. If you want to install plugins from the admin panel with Composer add on the end of HOST_ROOT/private/.env:
 
 ```
 COMPOSER_HOME=/private
