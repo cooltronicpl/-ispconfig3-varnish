@@ -119,7 +119,7 @@ Fix remote IP detection:
     perl -pe 's/(\s*)LogFormat(\s+)"(.*)%h(.*)"(.*)combined_ispconfig/LogFormat "%v %a %l %u %t \\"%r\\" %>s %O \\"%{Referer}i\\" \\"%{User-Agent}i\\"" combined_ispconfig/g' /etc/apache2/sites-available/ispconfig.conf.old | tee /etc/apache2/sites-available/ispconfig.conf > /dev/null
 ```
 
-##For many scripts like Wordpress, Craft etc.
+## For many scripts like Wordpress, Craft etc.
 
 ```
 echo "<IfModule setenvif_module>" >> /etc/apache2/apache2.conf
