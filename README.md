@@ -13,7 +13,7 @@ With SSL: Visitor > NGINX 443 > Varnish localhost 7443 > Apache
 
 I've done the test with the following configuration:
 
-* Tested on Debian 11 x64 with everything upgraded so far with kernel 5.10.0-19-amd64
+* Tested on Debian 11 x64 with everything upgraded so far with kernel 5.10.0-19
 * Apache 2.4.54
 * nginx-common 1.23.2
 * Varnish 6.5.1-1
