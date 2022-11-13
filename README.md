@@ -8,6 +8,7 @@ Your site is fast as rocket also with WP Rocket, Proxy Cache Purge on WordPress,
 So, we can have two scenarios:
 
 Without SSL: Visitor > Varnish > Apache
+
 With SSL: Visitor > NGINX 443 > Varnish localhost 7443 > Apache
 
 I've done the test with the following configuration:
