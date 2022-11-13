@@ -1,13 +1,13 @@
 server {
-    listen <tmpl_if name='ip_address' op='!=' value='*'><tmpl_if name='ip_address' op='!=' value=''><tmpl_var name='ip_address'>:</tmpl_if></tmpl_if>443 ssl;
-    listen [<tmpl_if name='ipv6_enabled'><tmpl_var name='ipv6_address'></tmpl_else>::</tmpl_if>]:443 ssl;
+    listen <tmpl_if name='ip_address' op='!=' value='*'><tmpl_if name='ip_address' op='!=' value=''><tmpl_var name='ip_address'>:</tmpl_if></tmpl_if>443 ssl http2;
+    listen [<tmpl_if name='ipv6_enabled'><tmpl_var name='ipv6_address'></tmpl_else>::</tmpl_if>]:443 ssl http2;
 
     server_name <tmpl_var name='domain'> <tmpl_var name='aliases'> <tmpl_if name='ip_address' op='!=' value='*'><tmpl_var name='ip_address'></tmpl_if> <tmpl_if name='ipv6_enabled'>[<tmpl_var name='ipv6_address'>]</tmpl_if>;
 
     root <tmpl_var name='web_document_root_www'>;
 
     # Disable access log file
-    access_log off;
+    access_log '/var/log/nginx/vhostaccess.log';
 
     # SSL certificate configuration
     ssl_certificate <tmpl_var name='ssl_crt_file'>;
@@ -18,13 +18,39 @@ server {
         location ^~ /error { root /var/www; }
     </tmpl_if>
 
+	# 150M upload to nginx
+    client_max_body_size 150M;
+	
+	# Mod Expires and CORS for CDN
+	location ~ \.(js|css|ico|html|woff|woff2|ttf|svg|eot|otf|mp4|webm)$ {
+		add_header "Access-Control-Allow-Origin" "*";
+		expires 365d;
+		access_log off;
+		add_header Cache-Control "public";
+	}
+
     # default location
     location / {
         proxy_pass http://127.0.0.1:7443;
         proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-Host $http_host;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header X-Forwarded-Proto https;
         proxy_set_header X-Forwarded-Port 443;
         proxy_set_header Host $host;
+
     }
+	location ~* \.(?:mp4|webm)$ {
+	    expires 1y;
+		access_log off;
+		add_header Cache-Control "max-age=31556952, public";
+	    proxy_pass http://127.0.0.1:7443;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-Host $http_host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto https;
+        proxy_set_header X-Forwarded-Port 443;
+        proxy_set_header Host $host;
+	}
+
 }

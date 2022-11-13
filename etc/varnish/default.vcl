@@ -31,6 +31,7 @@ acl purge {
     "localhost";
     "127.0.0.1";
     "::1";
+    // here add your server IPv4 adress like "11.22.33.44" and IPv6 (if your server has)
 }
 
 sub vcl_recv {
@@ -38,52 +39,61 @@ sub vcl_recv {
     #
     # Typically you clean up the request here, removing cookies you don't need,
     # rewriting the request, etc.
+#req.http.x-forwarded-for = client.ip
 
     if (std.port(server.ip) == 7443) {
         set req.backend_hint = secure;
     } else {
         set req.backend_hint = default;
     }
-   
-  if (req.http.host=="domain-to-disable.com"){
+# DISABLE SOME HOST DOMAIN, which you don't wan't to cache
+  if (req.http.host=="some-domain.com"){
    return(pass);
   }
-  # Disabled IPs for minification with WP Rocket
-  if (client.ip == "109.234.160.58")
+  
+# WP ROCKET IPv4 
+# TODO: add IPv6
+  if (
+   client.ip == "141.94.254.72" ||
+   client.ip == "109.234.160.58" ||
+   client.ip == "51.210.39.196" ||
+   client.ip == "51.83.15.135" ||
+   client.ip == "135.125.83.227" ||
+   client.ip == "213.32.57.158" ||
+   client.ip == "141.94.252.17" ||
+   client.ip == "51.178.134.82" ||
+   client.ip == "135.125.180.130" ||
+   client.ip == "141.95.202.69" ||
+   client.ip == "162.19.138.231" ||
+   client.ip == "141.94.133.225" ||
+   client.ip == "141.94.134.63" ||
+   client.ip == "15.235.11.139" ||
+   client.ip == "15.235.14.231" ||
+   client.ip == "15.235.50.215" ||
+   client.ip == "15.235.50.217" ||
+   client.ip == "15.235.82.194" ||
+   client.ip == "146.59.192.120" ||
+   client.ip == "162.19.73.17" ||
+   client.ip == "15.235.82.233" ||
+   client.ip == "152.228.165.39" ||
+   client.ip == "146.59.251.59"
+   )
   {
     return(pass);
   }
-  if (client.ip == "51.210.39.196")
-  {
-    return(pass);
-  }
-  if (client.ip == "51.83.15.135")
-  {
-    return(pass);
-  }
-  if (client.ip == "135.125.83.227")
-  {
-    return(pass);
-  }
-  # Added for disable for CRON Wordpress and previews
-  if (req.url ~ "^/preview=")
-  {
-    return(pass);
-  }
-  if (req.url ~ "wp-json")
-  {
-    return(pass);
-  }
-
-  if (req.url ~ "^/wp-json")
-  {
-    return(pass);
-  }
-  # Fixing some problems with WP Admin
-  if (req.url ~ "(wp-admin|post\.php|edit\.php|wp-login|wp-json)") {
+  // disable urls of Softacolous /staging, fixing many problems of WordPress and Craft CMS with default admin dashboard url
+  if (
+   req.url ~ "^/preview=" ||
+   req.url ~ "wp-json")
+   req.url ~ "staging/wp-json")
+   req.url ~ "^/wp-json")
+   req.url ~ "^/index.php?p=admin")
+   req.url ~ "^/admin")
+   req.url ~ "^/staging/wp-json")
+   req.url ~ "(wp-admin|staging/wp-admin|post\.php|edit\.php|wp-login|wp-json|staging)") {
      return(pass);
   }
-   # Purge logic to remove objects from the cache. 
+  # Purge logic to remove objects from the cache. 
     # Tailored to the Proxy Cache Purge WordPress plugin
     # See https://wordpress.org/plugins/varnish-http-purge/
     if(req.method == "PURGE") {
@@ -159,13 +169,20 @@ sub vcl_recv {
         return(hash);
     }
 
-    # No caching of special URLs, logged in users and some plugins
+    # No caching of special URLs, logged in users and some plugins of WordPress and Craft CMS 3 or 4 cookies
     if (
         req.http.Cookie ~ "wordpress_(?!test_)[a-zA-Z0-9_]+|wp-postpass|comment_author_[a-zA-Z0-9_]+|woocommerce_cart_hash|woocommerce_items_in_cart|wp_woocommerce_session_[a-zA-Z0-9]+|wordpress_logged_in_|comment_author|PHPSESSID" ||
-        req.http.Authorization ||
+        req.http.Cookie ~ "CRAFT_CSRF_TOKEN" ||
+		req.http.Cookie ~ "[a-zA-Z0-9_]+|_identity" ||
+        req.http.Cookie ~ "[a-zA-Z0-9_]+|_username" ||
+		req.http.Cookie ~ "__stripe_mid" ||
+		req.http.Cookie ~ "CraftSessionId" ||
+		req.http.Authorization ||
         req.url ~ "add_to_cart" ||
         req.url ~ "edd_action" ||
         req.url ~ "nocache" ||
+        req.url ~ "^/wp-json" ||
+        req.url ~ "^/staging" ||
         req.url ~ "^/addons" ||
         req.url ~ "^/bb-admin" ||
         req.url ~ "^/bb-login.php" ||
@@ -186,6 +203,7 @@ sub vcl_recv {
         req.url ~ "^/stats" ||
         req.url ~ "^/wc-api" ||
         req.url ~ "^/wp-admin" ||
+        req.url ~ "^/staging/wp-json" ||
         req.url ~ "^/wp-comments-post.php" ||
         req.url ~ "^/wp-cron.php" ||
         req.url ~ "^/wp-login.php" ||
@@ -193,7 +211,10 @@ sub vcl_recv {
         req.url ~ "^/wp-mail.php" ||
         req.url ~ "^/wp-login.php" ||
         req.url ~ "^\?add-to-cart=" ||
+        req.url ~ "^\?_locale=" ||
         req.url ~ "^\?wc-api=" ||
+        req.url ~ "^\?preview_id" ||
+		req.url ~ "^\?post" ||
         req.url ~ "^/preview=" ||
         req.url ~ "^/\.well-known/acme-challenge/"
     ) {
@@ -232,7 +253,7 @@ sub vcl_backend_response {
     if (bereq.http.X-Static-File == "true") {
         unset beresp.http.Set-Cookie;
         set beresp.http.X-Cacheable = "YES:Forced";
-        set beresp.ttl = 1d;
+        set beresp.ttl = 31d;
     }
 
 	# Remove the Set-Cookie header when a specific Wordfence cookie is set
