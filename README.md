@@ -1,4 +1,4 @@
-# WordPress and CraftCMS 3, Craft CMS 4 Varnish Cache Plugin with Nginx SSL to cache www sites on ISP Config 3.8.2p1
+# WordPress and CraftCMS 3, Craft CMS 4 Varnish Cache Plugin with Nginx SSL to cache www sites on ISP Config 3.8.2
 
 With ❤️ [CoolTRONIC.pl sp. z o.o.](https://cooltronic.pl) presents caching solution written by [Pawel Potacki](https://potacki.com)
 
@@ -19,7 +19,7 @@ I've done the test with the following configuration:
 * Varnish 6.5.1
 * Wordpress from 5.7, 5.8.2, 5.9, 6.0.x to 6.1
 * WP Bakery Builder and Elementor for WordPress
-* Now compatible with ISPConfig Version 3.2.8p1
+* Now compatible with ISPConfig Version, this branch v2 with 3.2.8p1 and ISP Config 3.2.8p2
 * WordFence IP Detection
 * WP Rocket from 3.10.6 up to 3.12.x with the plugin "WP Rocket | Alter Varnish's args" to change Varnish Addr on SSL sites
 * Proxy Cache Purge for WordPress
@@ -215,6 +215,26 @@ There may be other improvements. Just open an issue/request a feature.
 
 Do you need a sysadmin to install this module into your ISPConfig? We are available for you. [Contact us](https://cooltronic.pl/contact/) or [developer](<https://potacki.com/>). If my work was useful for your business, or you have problems with this script, and you need help contact me.
 
+## Update of ISP Config (tested up to 3.2.8p2)
+When updating keep vhost files
+```
+update_ispoconfig.sh
+```
+1. After update run:
+```
+rm /etc/nginx/sites-enabled/000-apps.vhost
+rm /etc/nginx/sites-enabled/999-acme.vhost
+nano /etc/apache2/ports.conf
+```
+2. Comment last line in nano or vim ```Listen 443```
+3. Remove the last string with date of backuped .vhosts files, it must ends with .master
+4. Reload vhosts ISPConfig > Tools > Sync Tools > Resync > Check "Websites" > Start. 
+5. Restart all services (apache2, Varnish, Nginx).
+```
+    systemctl restart apache2
+    systemctl restart varnish
+    systemctl restart nginx
+```
 ## Credits for contributors and knowledge sharing
 
 I've found very useful knowledge in the following URL:
