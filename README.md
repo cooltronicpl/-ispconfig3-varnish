@@ -21,15 +21,15 @@ I've done test with the following configuration:
 - WP Bakery Builder and Elementor for WordPress
 - Comaptibile with ISPConfig Version 3.2.8p1
 - WordFence IP Detection
-- WP Rocket from 3.10.6 up to 3.12.x with modification plugin to change Varnish Addr on SSL sites
-- Proxy Cache Purge
+- WP Rocket from 3.10.6 up to 3.12.x with plugin "WP Rocket | Alter Varnish's args" to change Varnish Addr on SSL sites
+- Proxy Cache Purge for WordPress
 - Softacolous with uncached staging in this example in `/staging` subfolder
 - CraftCMS 3.x with PHP 7.2 (with Composer patch)
 - CraftCMS 4.x with PHP 8.0 (with Composer patch)
 - Varnish Cache Purge 1.0.0-dev is now working now with CraftCMS 3.x and clears Varnish when we change data of SSL websites
 
-Now in alfa testing, it will be published [here](https://github.com/cooltronicpl/varnishcache/) we can share it if you want, please [contact us](https://cooltronic.pl/contact/).
-Notes at end how to [install CraftCMS in ISPConfig 3](https://github.com/cooltronicpl/-ispconfig3-varnish#craft-cms-4x-and-3x-install-notes-for-isp-config-3) and using with Plugin Installer and Composer are at the bottom.
+Now in alfa testing, it will be published [here](https://github.com/cooltronicpl/varnishcache/) we can share it if you want, please [contact us at](https://cooltronic.pl/contact/).
+Notes at end [how to install CraftCMS in ISPConfig 3](https://github.com/cooltronicpl/-ispconfig3-varnish#craft-cms-4x-and-3x-install-notes-for-isp-config-3) and using with Plugin Installer and Composer are at the bottom.
 Now also with WP Rocket nginx is using GZIP and BROTLI for all SSL hosts.
 It works with WP Rocket 3.10.6 up to 3.12.x Varnish add-on cache clearing with this config. Also cache purging are working with Proxy Cache Purge 5.0.3.
 
