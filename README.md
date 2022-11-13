@@ -216,26 +216,26 @@ There may be other improvements. Just open an issue/request a feature.
 Do you need a sysadmin to install this module into your ISPConfig? We are available for you. [Contact us](https://cooltronic.pl/contact/) or [developer](<https://potacki.com/>). If my work was useful for your business, or you have problems with this script, and you need help contact me.
 
 ## Update of ISP Config (tested up to 3.2.8p2)
-When updating keep vhost files
+1. When updating keep vhost files
 ```
 update_ispoconfig.sh
 ```
-1. After update run:
+2. After update run:
 ```
 rm /etc/nginx/sites-enabled/000-apps.vhost
 rm /etc/nginx/sites-enabled/999-acme.vhost
 nano /etc/apache2/ports.conf
 ```
-2. Comment last line in nano or vim ```#Listen 443```
-3. Remove the last string with date of backuped .vhosts files, it must ends with .master
-4. Restart all services (apache2, Varnish, Nginx).
+3. Comment last line in example in nano or vim ```#Listen 443```
+4. Remove the last string with date of backuped .vhosts files, it must ends with .master
+5. Restart all services (apache2, Varnish, Nginx).
 ```
     systemctl restart apache2
     systemctl restart varnish
     systemctl restart nginx
 ```
 6. Reload vhosts ISPConfig > Tools > Sync Tools > Resync > Check "Websites" > Start. 
-7. Repeat point 4.
+7. Repeat point 5.
 ## Credits for contributors and knowledge sharing
 
 I've found very useful knowledge in the following URL:
