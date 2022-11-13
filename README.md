@@ -35,7 +35,7 @@ It works with WP Rocket 3.10.6 up to 3.12.x Varnish add-on cache clearing with t
 
 This should work fine with Ubuntu, on Debian 11 also, and may requires small adjustments to work well on CentOS & RHEL-based distributions.
 
-## Installation steps (for me unecessary on Debian 11, for old systems, needs testing)
+## Installation steps
 
 Install dependancies:
 
