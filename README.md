@@ -57,7 +57,7 @@ Install dependancies:
     curl -fsSL https://nginx.org/keys/nginx_signing.key | apt-key add -
 ```
 
-### Install Varnish and NGINX (this is first step in Debian 11)
+### Install Varnish and NGINX (this is second step in Debian 11)
 
 ```
     apt-get update
