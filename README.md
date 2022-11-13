@@ -19,7 +19,7 @@ I've done the test with the following configuration:
 * Varnish 6.5.1
 * Wordpress from 5.7, 5.8.2, 5.9, 6.0.x to 6.1
 * WP Bakery Builder and Elementor for WordPress
-* Now compatible with ISPConfig Version, this branch v2 with 3.2.8p1 and ISP Config 3.2.8p2
+* Now compatible with ISPConfig, this branch v2 with 3.2.8p1 and 3.2.8p2
 * WordFence IP Detection
 * WP Rocket from 3.10.6 up to 3.12.x with the plugin "WP Rocket | Alter Varnish's args" to change Varnish Addr on SSL sites
 * Proxy Cache Purge for WordPress
