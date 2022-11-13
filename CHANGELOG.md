@@ -6,7 +6,7 @@
 - Changed nginx upload limit to 150M (you can change it), also critical, because default many times breaks many thing in Craft CMS an WP
 - Fixing some WordPress problems of deafult url's of admin, wp-json and more, also critical
 - Updated WP Rocket IPs
-- Added Craft CMS 3.x and 4.x support, and istall instructions
+- Added Craft CMS 3.x and 4.x support, and install instructions
 - Force Bortli and Gzip compression
 - Updated to ISP Config 3.2.8p1
 - Forced Browser Caching for static files, js, css etc. ending on mp4 or webm
