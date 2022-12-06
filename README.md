@@ -234,7 +234,8 @@ rm /etc/nginx/sites-enabled/999-acme.vhost
     systemctl restart nginx
 ```
 6. Reload vhosts ISPConfig > Tools > Sync Tools > Resync > Check "Websites" > Start. 
-7. Repeat point 5. to restart web services
+7. Repeat point 5. to restart web services after update and now your ISPConfig server is working after update.
+ 
 ## Credits for contributors and knowledge sharing
 
 I've found very useful knowledge in the following URL:
