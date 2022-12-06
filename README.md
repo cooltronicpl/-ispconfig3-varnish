@@ -224,9 +224,8 @@ update_ispoconfig.sh
 ```
 rm /etc/nginx/sites-enabled/000-apps.vhost
 rm /etc/nginx/sites-enabled/999-acme.vhost
-nano /etc/apache2/ports.conf
 ```
-3. Comment last line in example in nano or vim ```#Listen 443```
+3. Comment last line in apache 2 file ```/etc/apache2/ports.conf``` example in nano or vim ```#Listen 443``` or remove all, there should not be any ```Listen 443``` in ports.conf
 4. Remove the last string with date of backuped .vhosts files, it must ends with .master
 5. Restart all services (apache2, Varnish, Nginx).
 ```
