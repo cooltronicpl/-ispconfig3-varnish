@@ -237,7 +237,7 @@ rm /etc/nginx/sites-enabled/999-acme.vhost
  
 ## Special credits for knowledge sharing
 
-I've found very useful knowledge in the following URL:
+We've found very useful knowledge in the following URL:
 
 - [@manoaratefy](https://github.com/manoaratefy/ispconfig3-varnish)
 - [@Rackster](https://github.com/Rackster/ispconfig3-nginx-reverse-proxy)
