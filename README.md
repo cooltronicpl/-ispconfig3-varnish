@@ -226,7 +226,7 @@ rm /etc/nginx/sites-enabled/000-apps.vhost
 rm /etc/nginx/sites-enabled/999-acme.vhost
 ```
 3. Comment last line in apache 2 file ```/etc/apache2/ports.conf``` in nano or vim like that: ```#Listen 443``` or remove all when there are more, there should not be any active ```Listen 443``` declaration in ports.conf
-4. Remove the last string with date of backuped .vhosts files, it must ends with .master
+4. Remove the last string with date of backuped .vhosts files, it must ends with .master. There should be in folder: ```/usr/local/ispconfig/server/conf-custom```, also you can use files from repo when there ware not backuped.
 5. Restart all services (apache2, Varnish, Nginx).
 ```
     systemctl restart apache2
