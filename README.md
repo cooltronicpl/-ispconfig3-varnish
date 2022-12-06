@@ -26,7 +26,7 @@ I've done the test with the following configuration:
 * Softacolous with uncached staging in this example in /staging subfolder
 * CraftCMS 3.x with PHP 7.2 (with Composer patch)
 * CraftCMS 4.x with PHP 8.0 (with Composer patch)
-* Varnish Cache Purge 1.0.0-dev is now working now with CraftCMS 3.x, now 2.0.0-dev also is testing with external sitemap.xml preload for 4.x after making changes. This mechanism clears Varnish when we change data on SSL websites or when we disable it on some page (we actually working with this before publication).
+* Varnish Cache Purge 1.0.0-dev is now working now with CraftCMS 3.x, now 2.0.0-dev also is testing with external sitemap.xml preload for 4.x or after making changes. This mechanism clears Varnish when we change data on SSL websites or when we disable it on some page (we actually working with this before publication).
 
 Now in alfa testing, it will be published [here](https://github.com/cooltronicpl/varnishcache/) we can share it before if you want, please [contact us through the company site](https://cooltronic.pl/contact/). Notes at the end on [how to install CraftCMS in ISPConfig 3](https://github.com/cooltronicpl/-ispconfig3-varnish#craft-cms-4x-and-3x-install-notes-for-isp-config-3) and using with Plugin Installer and Composer are at the bottom. Now also with WP Rocket Nginx is using GZIP and BROTLI for all SSL hosts. It works with WP Rocket 3.10.6 up to 3.12.x Varnish add-on cache clearing with this config. Also, cache purging is working with Proxy Cache Purge 5.0.3 and to newest on v2.
 
