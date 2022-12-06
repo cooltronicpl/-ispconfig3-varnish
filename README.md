@@ -96,7 +96,7 @@ Move all files to its place:
     cp -R usr/* /usr/
 ```
 
-(Optional) You may add your server IPv4 and IPv6 (if server has) in default.vcl in acl purge, sometimes it fix some purge problems.
+(Optional) You may add your server IPv4 and IPv6 (if server has) in default.vcl in acl purge, sometimes it fix some purge with external plugins like WP Rocket when we have problems.
 
 Avoid NGINX to listen to port 80 and prepare folders:
 
