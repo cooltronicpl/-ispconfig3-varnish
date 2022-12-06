@@ -3,7 +3,7 @@
 With ❤️ [CoolTRONIC.pl sp. z o.o.](https://cooltronic.pl) presents caching solution written by [Pawel Potacki](https://potacki.com)
 
 This ISPConfig 3 plugin is built for those who want to set up Varnish Cache in ISPConfig for WordPress, and CraftCMS sites. We use Varnish for the cache, Apache for the backend, and we added NGINX for SSL termination.
-Your site is fast as rocket also with WP Rocket, Proxy Cache Purge on WordPress, and CoolTRONIC.pl Varnish Cache Purge on CraftCMS. This mechanism also enables brotli compression on WordPress with WP Rocket and eaisly respecting of Apache2 .htaccess rules from many WordPress or CraftCMS plugins.
+Your site is fast as rocket also with WP Rocket. We have some mechnism of automatic Varnish clearing with exterlnal plugins like Proxy Cache Purge on WordPress, and CoolTRONIC.pl Varnish Cache Purge on CraftCMS. This mechanism also enables brotli compression on WordPress with WP Rocket and eaisly respecting of Apache2 .htaccess rules from many WordPress or CraftCMS plugins.
 
 So, we can have two scenarios:
 
