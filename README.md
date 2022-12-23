@@ -1,4 +1,4 @@
-# WordPress and CraftCMS 3, Craft CMS 4 Varnish Cache Plugin with Nginx SSL to cache www sites on ISP Config 3.8.2
+# WordPress and CraftCMS 3, Craft CMS 4 Varnish Cache Plugin with Nginx SSL to cache www sites on ISP Config 3.2.9
 
 With ❤️ [CoolTRONIC.pl sp. z o.o.](https://cooltronic.pl) presents caching solution written by [Pawel Potacki](https://potacki.com)
 
