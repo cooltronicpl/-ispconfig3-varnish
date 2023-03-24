@@ -217,7 +217,7 @@ Do you need a sysadmin to install this module into your ISPConfig? We are availa
 ## Update of ISP Config (tested up to 3.2.9)
 1. When updating keep vhost files
 ```
-update_ispconfig.sh
+ispconfig_update.sh
 ```
 2. After update run:
 ```
