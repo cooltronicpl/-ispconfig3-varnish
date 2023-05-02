@@ -152,8 +152,8 @@ All cookies are included in this script, so the admin panel in YOUR_DOMAIN.com/a
 6. If you want to install plugins from the admin panel with Composer add on the end of HOST_ROOT/private/.env:
 
 ```
-COMPOSER_HOME=/private
-COMPOSER_CACHE_DIR=/private/cache
+COMPOSER_HOME=./private
+COMPOSER_CACHE_DIR=./private/cache
 ```
 
 You now can use [CoolTRONIC.pl Varnish Cache Plugin for CraftCMS](https://github.com/cooltronicpl/varnishcache/), it will be soon available for 3.x and maybe for 4.x later. When you want to test it, please [contact us through the company site](https://cooltronic.pl/contact/).
