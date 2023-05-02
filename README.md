@@ -83,7 +83,7 @@ Change Varnish ports:
 
 ```
     cp /lib/systemd/system/varnish.service /tmp/varnish.service.old
-    perl -pe 's/(\s*)ExecStart(\s*)=(\s*)\/usr\/sbin\/varnishd(.*)/ExecStart=\/usr\/sbin\/varnishd -a :80 -a localhost:7443 -f \/etc\/varnish\/default.vcl -s malloc,512m -p http_resp_hdr_len=42000 \/ /g' /tmp/varnish.service.old | tee /lib/systemd/system/varnish.service > /dev/null
+    perl -pe 's/(\s*)ExecStart(\s*)=(\s*)\/usr\/sbin\/varnishd(.*)/ExecStart=\/usr\/sbin\/varnishd -a :80 -a localhost:7443 -f \/etc\/varnish\/default.vcl -s malloc,512m -p http_resp_hdr_len=42000 -p feature=+http2 \/ /g' /tmp/varnish.service.old | tee /lib/systemd/system/varnish.service > /dev/null
     systemctl daemon-reload
 ```
 
