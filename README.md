@@ -1,4 +1,4 @@
-# Varnish Cache Plugin for WordPress and CraftCMS with NGINX SSL and ISPConfig 3
+# Varnish Cache Plugin for WordPress and CraftCMS with NGINX SSL for ISPConfig 3
 
 This plugin is developed by [CoolTRONIC.pl sp. z o.o. (LLC)](https://cooltronic.pl) and written by [Pawel Potacki](https://potacki.com). It allows you to use Varnish Cache in ISPConfig 3 for WordPress and CraftCMS sites. It uses Varnish for caching, Apache for the backend, and NGINX for SSL termination. It also supports WP Rocket, Proxy Cache Purge, and CoolTRONIC.pl Varnish Cloudflare & Preload plugins for automatic cache clearing and brotli compression. It respects the .htaccess rules from various WordPress and CraftCMS plugins.
 
