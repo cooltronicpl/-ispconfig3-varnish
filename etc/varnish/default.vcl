@@ -50,37 +50,8 @@ sub vcl_recv {
   if (req.http.host=="some-domain.com"){
    return(pass);
   }
-  
-# WP ROCKET IPv4 
-# TODO: add IPv6
-  if (
-   client.ip == "141.94.254.72" ||
-   client.ip == "109.234.160.58" ||
-   client.ip == "51.210.39.196" ||
-   client.ip == "51.83.15.135" ||
-   client.ip == "135.125.83.227" ||
-   client.ip == "141.94.252.17" ||
-   client.ip == "51.178.134.82" ||
-   client.ip == "135.125.180.130" ||
-   client.ip == "141.95.202.69" ||
-   client.ip == "162.19.138.231" ||
-   client.ip == "141.94.133.225" ||
-   client.ip == "141.94.134.63" ||
-   client.ip == "15.235.11.139" ||
-   client.ip == "15.235.14.231" ||
-   client.ip == "15.235.50.215" ||
-   client.ip == "15.235.50.217" ||
-   client.ip == "15.235.82.194" ||
-   client.ip == "146.59.192.120" ||
-   client.ip == "162.19.73.17" ||
-   client.ip == "15.235.82.233" ||
-   client.ip == "152.228.165.39" ||
-   client.ip == "146.59.251.59"
-   )
-  {
-    return(pass);
-  }
-  // disable urls of Softacolous /staging, fixing many problems of WordPress and Craft CMS with default admin dashboard url
+
+  // disable urls and fixing many problems of WordPress and Craft CMS with default admin dashboard url
   if (
    req.url ~ "^/preview=" ||
    req.url ~ "wp-json")
@@ -89,7 +60,7 @@ sub vcl_recv {
    req.url ~ "^/index.php?p=admin")
    req.url ~ "^/admin")
    req.url ~ "^/staging/wp-json")
-   req.url ~ "(wp-admin|staging/wp-admin|post\.php|edit\.php|wp-login|wp-json|staging)") {
+   req.url ~ "(wp-admin|post\.php|edit\.php|wp-login|wp-json)") {
      return(pass);
   }
   # Purge logic to remove objects from the cache. 
@@ -181,7 +152,6 @@ sub vcl_recv {
         req.url ~ "edd_action" ||
         req.url ~ "nocache" ||
         req.url ~ "^/wp-json" ||
-        req.url ~ "^/staging" ||
         req.url ~ "^/addons" ||
         req.url ~ "^/bb-admin" ||
         req.url ~ "^/bb-login.php" ||
@@ -202,7 +172,6 @@ sub vcl_recv {
         req.url ~ "^/stats" ||
         req.url ~ "^/wc-api" ||
         req.url ~ "^/wp-admin" ||
-        req.url ~ "^/staging/wp-json" ||
         req.url ~ "^/wp-comments-post.php" ||
         req.url ~ "^/wp-cron.php" ||
         req.url ~ "^/wp-login.php" ||

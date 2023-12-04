@@ -1,5 +1,13 @@
 # ISP Config 3 Varnish Cache Plugin for WP Rocket WordPress 5.7 to 6.1, CraftCMS 3.x, CraftCMS 4.x websites
 
+## v3 - 2023-12-04
+
+- Removed obsolete WP Rocket IPs and made some other changes in `default.vcl`
+- Updated the compatible versions of WordPress, Craft CMS, WP Rocket, and Proxy Cache Purge, and others in `README.md`
+- Improved the structure and content of `README.md`
+- Added information about the brotli compression enabled by default in NGINX
+- Changed the license from GPLv2 or GPLv3 to GPLv3 only
+
 ## v2 - 2022-11-13 [CRITICAL]
 
 - Secured Varnish services to localhost, this fix in README.md is critical
