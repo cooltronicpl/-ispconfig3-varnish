@@ -321,7 +321,7 @@ There should not be any active Listen 443 declaration in the ports.conf file.
  
 ## How to use brotli compression with NGINX
 
-Brotli is a compression algorithm that can improve the speed and performance of your web pages. You can either install the brotli modules from the package manager or compile them from the source code. You can find more information about how to compile the brotli modules from the source code [here](https://github.com/google/ngx_brotli).
+Brotli is a compression algorithm that can improve the speed and performance of your web pages. You can either install the brotli modules from the package manager or compile them from the source code. You can find more information about how to compile the brotli modules from the [source code](https://github.com/google/ngx_brotli) and [here instruction for Debian](https://www.howtoforge.com/how-to-add-brotli-support-to-nginx-on-debian-10/).
 
 To load a compiled brotli modules from source, you may need to add these lines at the top of the `/etc/nginx/nginx.conf` file:
 
