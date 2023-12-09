@@ -54,12 +54,12 @@ sub vcl_recv {
   // disable urls and fixing many problems of WordPress and Craft CMS with default admin dashboard url
   if (
    req.url ~ "^/preview=" ||
-   req.url ~ "wp-json")
-   req.url ~ "staging/wp-json")
-   req.url ~ "^/wp-json")
-   req.url ~ "^/index.php?p=admin")
-   req.url ~ "^/admin")
-   req.url ~ "^/staging/wp-json")
+   req.url ~ "wp-json" ||
+   req.url ~ "staging/wp-json" ||
+   req.url ~ "^/wp-json" ||
+   req.url ~ "^/index.php?p=admin" ||
+   req.url ~ "^/admin" ||
+   req.url ~ "^/staging/wp-json" ||
    req.url ~ "(wp-admin|post\.php|edit\.php|wp-login|wp-json)") {
      return(pass);
   }
