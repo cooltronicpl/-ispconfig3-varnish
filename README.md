@@ -127,11 +127,7 @@ LimitNOFILE=131072
 # Default log size is 80MB vsl + 1M vsm + header -> 82MB
 # unit is bytes
 LimitMEMLOCK=85983232
-ExecStart=/usr/sbin/varnishd -a :80 -a localhost:7443 -f /etc/varnish/default.vcl -s malloc,512m -p http_resp_hdr_len=42000 -p feature=+http2 \
-          -j unix,user=vcache \
-          -F \
-          -T localhost:6082 \
-          -f /etc/varnish/default.vcl \
+ExecStart=/usr/sbin/varnishd -a :80 -a localhost:7443 -a localhost:6081 -s malloc,512m -p http_resp_hdr_len=42000 -p feature=+http2 -j unix,user=vcache -T localhost:6082 -f /etc/varnish/default.vcl
 ExecReload=/usr/share/varnish/varnishreload
 ProtectSystem=full
 ProtectHome=true
