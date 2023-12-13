@@ -44,10 +44,10 @@ The plugin has been tested with the following configuration:
 * CraftCMS 3.x with PHP 7.2 (with Composer patch)
 * CraftCMS 4.x with PHP 8.0 (with Composer patch)
 * PHP from 5.6 to 8.3 from Sury repository
-* [Varnish Cloudflare & Preload](https://github.com/cooltronicpl/varnishcache/) for CraftCMS 3.x and 4.x with Cloudflare support and sitemap.xml preload
-* Cloudflare support on Varnish Powered Servers on WP Rocket (WordPress) and Varnish Cloudflare & Preload (Craft CMS 4.x)
+* [CDN Cache & Preload](https://github.com/cooltronicpl/varnishcache/) for CraftCMS 3.x and 4.x with Cloudflare support and sitemap.xml preload
+* Cloudflare support on Varnish Powered Servers on WP Rocket (WordPress) and CDN Cache & Preload (Craft CMS 4.x)
 
-Varnish Cloudflare & Preload for Craft CMS 3.x and 4.x is available [here at Craft CMS Store](https://plugins.craftcms.com/varnishcache/). You can also find some notes on how to install [CraftCMS in ISPConfig 3](https://github.com/cooltronicpl/-ispconfig3-varnish#craft-cms-4x-and-3x-install-notes-for-isp-config-3) and use it with Plugin Installer and Composer. The plugin also enables GZIP and BROTLI compression on NGINX for all SSL hosts. It works with WP Rocket Varnish add-on and Proxy Cache Purge for cache purging.
+CDN Cache & Preload for Craft CMS 3.x and 4.x is available [here at Craft CMS Store](https://plugins.craftcms.com/varnishcache/). You can also find some notes on how to install [CraftCMS in ISPConfig 3](https://github.com/cooltronicpl/-ispconfig3-varnish#craft-cms-4x-and-3x-install-notes-for-isp-config-3) and use it with Plugin Installer and Composer. The plugin also enables GZIP and BROTLI compression on NGINX for all SSL hosts. It works with WP Rocket Varnish add-on and Proxy Cache Purge for cache purging.
 
 The plugin should work fine with Ubuntu and Debian, and may require some adjustments for CentOS & RHEL-based distributions.
 
@@ -224,7 +224,7 @@ COMPOSER_HOME=./private
 COMPOSER_CACHE_DIR=./private/cache
 ```
 
-You can now use the [CoolTRONIC.pl Varnish Cloudflare & Preload Plugin for CraftCMS](https://plugins.craftcms.com/varnishcache), which is compatible with Craft CMS 3.x and 4.x. It also supports Cloudflare and sitemap.xml preload.
+You can now use the [CoolTRONIC.pl CDN Cache & Preload for CraftCMS](https://plugins.craftcms.com/varnishcache), which is compatible with Craft CMS 3.x and 4.x. It also supports Cloudflare and sitemap.xml preload.
 
 ## Notes about plugin ports
 
