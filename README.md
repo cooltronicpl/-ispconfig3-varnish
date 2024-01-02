@@ -367,4 +367,4 @@ ISPConfig 3 Varnish Cache Plugin is distributed in the hope that it will be usef
 
 You should have received a copy of the GNU General Public License along with ISPConfig 3 Varnish Cache Plugin. If not, see <https://www.gnu.org/licenses/>.
 
-See files COPYING.GPL3 for more [License](LICENSE.md) information.
+See [License file](LICENSE.md) information.
