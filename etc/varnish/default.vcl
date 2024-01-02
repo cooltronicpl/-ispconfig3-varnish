@@ -63,15 +63,22 @@ sub vcl_recv {
    req.url ~ "(wp-admin|post\.php|edit\.php|wp-login|wp-json)") {
      return(pass);
   }
-  # Purge logic to remove objects from the cache. 
-    # Tailored to the Proxy Cache Purge WordPress plugin
+	# Purge logic to remove objects from the cache. 
+    # Tailored to the CDN Cache & Preload for Craft CMS plugin 
+	# See https://cooltronic.eu/plugin/cdn-cache-preload/
+	# See https://cooltronic.eu/plugin/cdn-cache-preload/method-urlmode/
+	# and WP Rocket, Proxy Cache Purge WordPress plugin
     # See https://wordpress.org/plugins/varnish-http-purge/
     if(req.method == "PURGE") {
         if(!client.ip ~ purge) {
             return(synth(405,"PURGE not allowed for this IP address"));
         }
         if (req.http.X-Purge-Method == "regex") {
-            ban("req.url ~ " + req.url + " && req.http.host ~ " + req.http.host);
+            ban("obj.http.x-url ~ " + req.url + " && obj.http.x-host == " + req.http.host);
+            return(synth(200, "Purged"));
+        }
+		if (req.http.X-Purge-Method == "urlmode") {
+            ban("obj.http.x-url ~ " + req.http.url + " && obj.http.x-host == " + req.http.host);
             return(synth(200, "Purged"));
         }
         ban("obj.http.x-url == " + req.url + " && obj.http.x-host == " + req.http.host);
@@ -88,20 +95,6 @@ sub vcl_recv {
     # See https://httpoxy.org/
     unset req.http.proxy;
 
-    # Purge logic to remove objects from the cache. 
-    # Tailored to the Proxy Cache Purge WordPress plugin
-    # See https://wordpress.org/plugins/varnish-http-purge/
-    if(req.method == "PURGE") {
-        if(!client.ip ~ purge) {
-            return(synth(405,"PURGE not allowed for this IP address"));
-        }
-        if (req.http.X-Purge-Method == "regex") {
-            ban("obj.http.x-url ~ " + req.url + " && obj.http.x-host == " + req.http.host);
-            return(synth(200, "Purged"));
-        }
-        ban("obj.http.x-url == " + req.url + " && obj.http.x-host == " + req.http.host);
-        return(synth(200, "Purged"));
-    }
 
     # Only handle relevant HTTP request methods
     if (

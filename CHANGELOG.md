@@ -1,4 +1,9 @@
-# ISP Config 3 Varnish Cache Plugin for WP Rocket WordPress 5.7 to 6.1, CraftCMS 3.x, CraftCMS 4.x websites
+# ISP Config 3 Varnish Cache Reverse-Proxy with SSL termination Plugin (WP Rocket & Proxy Cache Purge) for WordPress 5.7 to 6.4.x, CraftCMS 3.x, CraftCMS 4.x, 5.0.0.alpha (CDN Cache & Preload) websites
+
+## v4 - 2024-01-02
+
+### Added
+- Introduced `urlmode` mode to clear cache by `url` sent in headers, to resolve problems on some hosts
 
 ## v3 - 2023-12-04
 
