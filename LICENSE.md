@@ -1,4 +1,4 @@
-# ISPConfig Varnish NGINX SSL Reverse-Proxy Plugin Copyright (C) 2024 [CoolTRONIC.pl sp. z o.o. (LLC)](https://cooltronic.pl) by [Pawel Potacki](https://potacki.com).
+ISPConfig Varnish NGINX SSL Reverse-Proxy Plugin Copyright (C) 2024 [CoolTRONIC.pl sp. z o.o. (LLC)](https://cooltronic.pl) by [Pawel Potacki](https://potacki.com).
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
